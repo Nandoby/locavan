@@ -1,0 +1,99 @@
+@import "~@fortawesome/fontawesome-pro/css/fontawesome.min.css";
+@import "~@fortawesome/fontawesome-pro/css/regular.min.css";
+@import "~@fortawesome/fontawesome-pro/css/solid.min.css";
+@import "~@fortawesome/fontawesome-pro/css/light.min.css";
+@import "../../node_modules/vanillajs-datepicker/dist/css/datepicker.css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer components {
+    .header {
+        @apply min-h-screen p-[1px] bg-blend-overlay bg-black/75 bg-[url(https://images.unsplash.com/photo-1613547566635-8adfcd6f23cf?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1662)] bg-cover bg-center
+    }
+
+    .linkanimate {
+        width: 0;
+        position: relative;
+    }
+
+    .linkanimate::after {
+        content: "";
+        transition: width 0.5s ease-in-out;
+        position: absolute;
+        width: 0;
+        right: 0;
+        height: 2px;
+        bottom: -8px;
+        background-color: #F59E0B;
+    }
+
+    .linkanimate:hover::after {
+        width: 100%;
+        left: 0;
+    }
+
+
+    #locavan svg {
+        stroke-width: 0.26;
+        fill: none;
+        width: 100%;
+        min-height: 200px;
+        max-height: 400px;
+        height: 100%;
+    }
+
+    #locavan svg path {
+        stroke-dasharray: 1;
+        stroke-dashoffset: 1;
+        stroke-linejoin: round;
+        stroke-linecap: round;
+        animation: anim 2s ease-in-out forwards
+    }
+
+
+    @keyframes anim {
+        to {
+            stroke-dashoffset: 0;
+        }
+    }
+
+    @media screen and (max-width: 857px) {
+        #navigation ul {
+            margin-top: 24px;
+            margin-bottom: 16px;
+        }
+    }
+
+    .toggle-apparition {
+        @apply w-full h-screen bg-black/50 top-0 bottom-0 z-20 fixed
+    }
+
+
+}
+
+.owl-next span, .owl-prev span {
+    padding: 8px;
+}
+
+.owl-nav button.owl-next:hover,
+.owl-nav button.owl-prev:hover {
+    background: #d97706 !important;
+}
+
+.owl-theme .owl-dots .owl-dot.active span, .owl-theme .owl-dots .owl-dot:hover span {
+    background: #d97706 !important;
+}
+
+.icones {
+    display: grid;
+    grid-gap: 16px;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    align-items: center;
+    margin-top: 16px;
+}
+
+.datepicker-grid span.disabled {
+    color: red;
+}
