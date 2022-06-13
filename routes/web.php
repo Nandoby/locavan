@@ -32,6 +32,9 @@ Route::get('/vehicle/{id}', [VehicleController::class, 'show'])
 Route::post('/booking/vehicle/{id}', [BookingController::class, 'index'])
     ->name('booking.index');
 
+Route::post('/booking', [BookingController::class, 'store'])
+    ->name('booking.store');
+
 /**
  * Authentication routes
  */

@@ -13,6 +13,13 @@
 
 @section('content')
     @include('partials.header')
+
+    @if(session('success'))
+        <div class="p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:text-green-800" role="alert">
+            {{ session('success') }}
+        </div>
+    @endif
+
     <main class="box-border">
         <div class="mx-auto p-0">
             <section class="container mx-auto mt-20 flex flex-col md:flex-row md:space-x-4 p-4">
