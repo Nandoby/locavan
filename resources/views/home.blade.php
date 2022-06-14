@@ -13,7 +13,7 @@
                 </li>
                 @if(!Auth::check())
                     <li class="hidden sm:block">
-                        <a class="tracking-wide linkanimate" href="{{ route('auth.login') }}">Connexion</a>
+                        <a class="tracking-wide linkanimate" href="{{ route('auth.login') }}">Connexion | Inscription</a>
                     </li>
                 @else
                     <button id="dropdownDefault" data-dropdown-toggle="dropdown"
@@ -24,25 +24,31 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                   d="M19 9l-7 7-7-7"></path>
                         </svg>
+                        <img class="w-10 h-10 rounded-full ml-4"
+                             src="{{ asset('storage/'.Auth::getUser()->avatar_path) }}"
+                             alt="">
                     </button>
-                    <img class="w-16 h-16 rounded-full"
-                         src="{{ asset('storage/'.Auth::getUser()->avatar_path) }}"
-                         alt="">
+
                     <!-- Dropdown menu -->
                     <div id="dropdown"
                          class="z-10 hidden bg-white divide-y divide-gray-100 rounded shadow w-44 dark:bg-gray-700">
                         <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefault">
 
                             <li>
-                                <a href="#"
-                                   class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Modifier
+                                <a href="/profile"
+                                   class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white flex justify-center gap-4 items-center"><i class="fa-solid fa-user"></i>Modifier
                                     profil</a>
                             </li>
-
+                            <li>
+                                <a href="#"
+                                   class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white flex justify-center gap-4 items-center"><i class="fa-solid fa-rv"></i>Mes réservations</a>
+                            </li>
                             <li>
                                 <a href="{{ route('auth.logout') }}"
-                                   class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Déconnexion</a>
+                                   class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white flex justify-center gap-4 items-center"><i class="fa-solid fa-arrow-right-from-bracket"></i>Déconnexion</a>
                             </li>
+
+
                         </ul>
                     </div>
                 @endif
@@ -129,40 +135,6 @@
             </div>
         </div>
 
-        <!-- Search Form -->
-        <section class="container mx-auto p-2">
-            <div class="w-full sm:w-8/12 mx-auto mt-8 shadow-xl p-4 bg-neutral-50 rounded-lg">
-                <h3 class="text-3xl text-neutral-900 font-bold mt-4">Location de camping-cars</h3>
-                <h5 class="text-lg text-neutral-500">et vans aménagés entre particuliers</h5>
-
-
-                <form action="" method="">
-                    <label class="block mt-4">
-                        Où voulez-vous louer ?
-                        <br>
-                        <input class="border border-neutral-300 p-2 rounded w-full" type="search"
-                               placeholder="Ex: Mons">
-                    </label>
-                    <div class="flex flex-wrap gap-4">
-                        <label class="block mt-4 flex-1 ">
-                            Date de départ
-                            <br>
-                            <input type="date" class="border border-neutral-300 p-2 rounded w-full">
-                        </label>
-                        <label class="block mt-4 flex-1 ">
-                            Date de retour
-                            <br>
-                            <input type="date" class="border border-neutral-300 p-2 rounded w-full">
-                        </label>
-                    </div>
-                    <button
-                        class="block bg-amber-500 ml-auto p-4 rounded-lg mt-4 text-white transition-all duration-300 ease-in-out hover:bg-amber-600"
-                        type="submit">Rechercher
-                    </button>
-                </form>
-            </div>
-        </section>
-        <!-- Search Form End -->
     </header>
     <main>
 
