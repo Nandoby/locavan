@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Booking;
+use App\Models\User;
 use App\Models\Vehicle;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -75,17 +76,17 @@ class BookingController extends Controller
             'start_date' => $start_date,
             'end_date' => $end_date,
             'user_id' => Auth::id(),
-            'vehicle_id' => $vehicle_id
+            'vehicle_id' => $vehicle_id,
         ]);
 
         $booking->save();
+
 
         $request->session()->remove('vehicle_id');
 
         return redirect()->route('vehicle.show', ['id' => $vehicle_id])->with('success', 'Votre réservation a bien été prise en compte');
 
     }
-
 
 
 }

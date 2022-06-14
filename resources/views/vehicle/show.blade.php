@@ -8,14 +8,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css"
           integrity="sha512-ZKX+BvQihRJPA8CROKBhDNvoc2aDMOdAlcm7TUQY+35XYtrd3yh95QOOhsPDQY9QnKE0Wqag9y38OIgEvb88cA=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.1.4/dist/css/datepicker-bs4.min.css">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.1.4/dist/css/datepicker-bs4.min.css">
 @endsection
 
 @section('content')
     @include('partials.header')
 
     @if(session('success'))
-        <div class="p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:text-green-800" role="alert">
+        <div class="p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:text-green-800"
+             role="alert">
             {{ session('success') }}
         </div>
     @endif
@@ -100,28 +102,27 @@
                             Réservation</h2>
                         <form class="p-4" method="post" action="{{ route('booking.index', ['id' => $vehicle->id]) }}">
                             @csrf
-                                <div class="flex gap-2 mb-4">
-                                    <div class="flex-1">
-                                        <label class="block">Date de départ</label>
-                                        <input
-                                            id="booking_startDate"
-                                            class="border border-neutral-300 rounded w-full p-2 focus:outline outline-amber-500"
-                                            type="text"
-                                            name="start_date"
-                                        >
-                                    </div>
-
-                                    <div class="flex-1">
-                                        <label class="block">Date de retour</label>
-                                        <input
-                                            id="booking_endDate"
-                                            class="border border-neutral-300 rounded w-full p-2 focus:outline outline-amber-500"
-                                            type="text"
-                                            name="end_date"
-                                        >
-                                    </div>
+                            <div class="flex gap-2 mb-4">
+                                <div class="flex-1">
+                                    <label class="block">Date de départ</label>
+                                    <input
+                                        id="booking_startDate"
+                                        class="border border-neutral-300 rounded w-full p-2 focus:outline outline-amber-500"
+                                        type="text"
+                                        name="start_date"
+                                    >
                                 </div>
 
+                                <div class="flex-1">
+                                    <label class="block">Date de retour</label>
+                                    <input
+                                        id="booking_endDate"
+                                        class="border border-neutral-300 rounded w-full p-2 focus:outline outline-amber-500"
+                                        type="text"
+                                        name="end_date"
+                                    >
+                                </div>
+                            </div>
 
 
                             <button type="submit"
@@ -198,7 +199,7 @@
             'albumLabel': "Image %1 sur %2",
             'wrapAround': true
         })
-    </script >
+    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.1.4/dist/js/datepicker.min.js"></script>
     <script>
@@ -207,31 +208,32 @@
         let endDateMin = startDate.value
         const datepickerStart = new Datepicker(startDate, {
             format: 'dd/mm/yyyy',
-            minDate: new Date(),
             datesDisabled: [
-                @foreach($vehicle->getNotAvailableDays() as $day)
+                @if ($vehicle->getNotAvailableDays() !== null)
+                    @foreach($vehicle->getNotAvailableDays($vehicle->id) as $day)
                     "{{ $day->format('d/m/Y') }}",
                 @endforeach
-            ]
-        })
+                @endif
+            ],
+            minDate: new Date(),
 
+        })
 
 
         startDate.addEventListener('changeDate', () => {
             const datepickerEnd = new Datepicker(endDate, {
                 format: 'dd/mm/yyyy',
-                minDate: startDate.value,
                 datesDisabled: [
-                    @foreach($vehicle->getNotAvailableDays() as $day)
+                    @if ($vehicle->getNotAvailableDays() !== null)
+                        @foreach($vehicle->getNotAvailableDays($vehicle->id) as $day)
                         "{{ $day->format('d/m/Y') }}",
                     @endforeach
-                ]
+                    @endif
+                ],
+                minDate: startDate.value,
             })
         })
     </script>
-
-
-
 
 @endsection
 

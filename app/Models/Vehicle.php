@@ -53,24 +53,19 @@ class Vehicle extends Model
     {
         $notAvailableDays = [];
 
-        if ($this->bookings()) {
-            foreach($this->bookings as $booking) {
 
-                $startDate = Carbon::make($booking->start_date)->isoFormat('X');
+        foreach ($this->bookings as $booking) {
 
-                $endDate = Carbon::make($booking->end_date)->isoFormat('X');
 
-                $result = range($startDate, $endDate, 24*60*60);
+            $startDate = Carbon::make($booking->start_date)->timestamp;
+            $endDate = Carbon::make($booking->end_date)->timestamp;
+            $result = range($startDate, $endDate, 86400);
 
-                $days = array_map(function($dayTimestamp){
-                    return new \DateTime(date('Y-m-d', $dayTimestamp));
-                }, $result);
+            $days = array_map(function ($dayTimestamp) {
+                return new \DateTime(date('Y-m-d', $dayTimestamp));
+            }, $result);
 
-                $notAvailableDays = array_merge($notAvailableDays, $days);
-
-                return $notAvailableDays;
-
-            }
+            $notAvailableDays = array_merge_recursive($notAvailableDays, $days);
         }
 
         return $notAvailableDays;
