@@ -60,7 +60,7 @@
 
             <div class="mb-3">
                 <p class="text-sm font-bold mb-2"><span class="text-red-500 font-bold">*</span> Avatar</p>
-                <img class="w-24 h-24" src="{{ asset('/storage/'.$user->avatar_path) }}">
+                <img class="w-24 h-24" src="{{ Storage::url($user->avatar_path) }}">
                 <input type="file" name="avatar"
                        class="mt-2 rounded bg-gray-50 text-gray-900 w-full text-sm border border-gray-300">
                 @error('avatar')

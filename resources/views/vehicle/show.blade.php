@@ -34,7 +34,7 @@
                         @endforeach
                     </div>
                     <div class="flex space-x-4">
-                        <img class="w-24 h-24" src="{{ asset('storage/'.$vehicle->user->avatar_path)  }}" alt="">
+                        <img class="w-24 h-24" src="{{ Storage::url($vehicle->user->avatar_path) }}" alt="">
                         <div class="space-y-2">
                             <h3 class="text-2xl font-semibold">{{ $vehicle->type->name }}
                                 de {{ $vehicle->user->first_name }} {{ $vehicle->user->last_name }}</h3>
@@ -160,7 +160,7 @@
                     <div class="divide-y divide-slate-300 w-12/12 lg:w-6/12 mx-auto">
                         @foreach($vehicle->comments as $comment)
                             <div class="my-8 flex gap-4 p-6 items-start">
-                                <img class="rounded-lg w-16" src="{{ asset('storage/'.$comment->user->avatar_path) }}">
+                                <img class="rounded-lg w-16" src="{{ Storage::url($vehicle->user->avatar_path) }}">
                                 <div class="w-full">
                                     <h5 class="font-medium">{{ $comment->user->first_name }} {{ $comment->user->last_name }}</h5>
                                     <p class="text-sm text-neutral-500 italic">{{ $comment->created_at->isoFormat('LL') }}</p>
@@ -170,9 +170,9 @@
                                     @if ( count($comment->memories) > 0 )
                                         <div class="memories flex flex-wrap gap-4 mt-4">
                                             @foreach($comment->memories as $memory)
-                                                <a href="{{ $memory->path }}" data-lightbox="image"
+                                                <a href="{{ Storage::url($memory->path) }}" data-lightbox="image"
                                                    data-title="{{ $memory->comment->user->name }} - {{ $memory->created_at->isoFormat('LL') }} - {{ $memory->comment->vehicle->type->name }} {{ $memory->comment->vehicle->model }}">
-                                                    <img class="w-24 h-24 rounded-lg" src="{{ $memory->path }}">
+                                                    <img class="w-24 h-24 rounded-lg" src="{{ Storage::url($memory->path) }}">
                                                 </a>
                                             @endforeach
                                         </div>

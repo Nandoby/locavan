@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('memories', function (Blueprint $table) {
             $table->id();
             $table->string('path');
-            $table->string('title');
             $table->foreignId('comment_id')->constrained();
             $table->timestamps();
         });

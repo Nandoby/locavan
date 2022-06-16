@@ -43,6 +43,8 @@ services:
             - './vendor/laravel/sail/database/mysql/create-testing-database.sh:/docker-entrypoint-initdb.d/10-create-testing-database.sh'
         networks:
             - sail
+#            - traefik_webgateway
+
         healthcheck:
             test: ["CMD", "mysqladmin", "ping", "-p${DB_PASSWORD}"]
             retries: 3
@@ -67,6 +69,7 @@ services:
             - 'sail-redis:/data'
         networks:
             - sail
+
         healthcheck:
             test: ["CMD", "redis-cli", "ping"]
             retries: 3
@@ -79,6 +82,7 @@ services:
             - 'sail-meilisearch:/data.ms'
         networks:
             - sail
+
         healthcheck:
             test: ["CMD", "wget", "--no-verbose", "--spider",  "http://localhost:7700/health"]
             retries: 3
@@ -90,12 +94,14 @@ services:
             - '${FORWARD_MAILHOG_DASHBOARD_PORT:-8025}:8025'
         networks:
             - sail
+
     selenium:
         image: 'selenium/standalone-chrome'
         volumes:
             - '/dev/shm:/dev/shm'
         networks:
             - sail
+
 networks:
     sail:
         driver: bridge

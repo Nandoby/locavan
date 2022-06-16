@@ -21,7 +21,6 @@ class MemoryFactory extends Factory
 
         return [
             'path' => "https://picsum.photos/id/$id/800/800",
-            'title' => $this->faker->word,
             'comment_id' => Comment::all()->random()->id,
         ];
     }

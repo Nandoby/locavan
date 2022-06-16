@@ -36,6 +36,15 @@ Route::post('/booking/vehicle/{id}', [BookingController::class, 'index'])
 Route::post('/booking', [BookingController::class, 'store'])
     ->name('booking.store');
 
+Route::get('/my-bookings', [BookingController::class, 'myBookings'])
+    ->name('my-bookings');
+
+Route::get('/booking/{id}', [BookingController::class, 'show'])
+    ->name('booking.show');
+
+Route::post('/booking/comment/store/{booking_id}', [BookingController::class, 'storeComment'])
+    ->name('booking.store.comment');
+
 /**
  * Authentication routes
  */
@@ -55,7 +64,7 @@ Route::post('/register', [AuthController::class, 'registerPost'])
     ->name('auth.register.post');
 
 /**
- * Modification du profil
+ * Gestion du profil
  */
 Route::get('/profile', [UserController::class, 'profile'])->middleware('auth');
 Route::post('/profile', [UserController::class, 'update']);

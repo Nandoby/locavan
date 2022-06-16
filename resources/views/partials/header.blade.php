@@ -37,12 +37,12 @@
                     <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefault">
 
                         <li>
-                            <a href="#"
+                            <a href="/profile"
                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white flex justify-center gap-4 items-center"><i class="fa-solid fa-user"></i>Modifier
                                 profil</a>
                         </li>
                         <li>
-                            <a href="#"
+                            <a href="{{ route('my-bookings') }}"
                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white flex justify-center gap-4 items-center"><i class="fa-solid fa-rv"></i>Mes réservations</a>
                         </li>
                         <li>

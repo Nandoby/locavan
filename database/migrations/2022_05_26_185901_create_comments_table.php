@@ -15,7 +15,6 @@ return new class extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
             $table->mediumText('content');
             $table->integer('rating');
             $table->foreignId('vehicle_id')->constrained();

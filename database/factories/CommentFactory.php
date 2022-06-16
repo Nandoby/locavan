@@ -19,7 +19,6 @@ class CommentFactory extends Factory
     public function definition()
     {
         return [
-            'title' => $this->faker->words('3', true),
             'content' => $this->faker->text,
             'rating' => $this->faker->numberBetween(0, 5),
             'vehicle_id' => Vehicle::all()->random()->id,

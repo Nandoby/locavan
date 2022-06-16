@@ -10,6 +10,10 @@ class Memory extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'comment_id', 'path', 'title',
+    ];
+
     public function comment(): BelongsTo
     {
         return $this->belongsTo(Comment::class);

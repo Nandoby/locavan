@@ -25,7 +25,7 @@
                                   d="M19 9l-7 7-7-7"></path>
                         </svg>
                         <img class="w-10 h-10 rounded-full ml-4"
-                             src="{{ asset('storage/'.Auth::getUser()->avatar_path) }}"
+                             src="{{ Storage::url(Auth::getUser()->avatar_path) }}"
                              alt="">
                     </button>
 
@@ -40,7 +40,7 @@
                                     profil</a>
                             </li>
                             <li>
-                                <a href="#"
+                                <a href="{{ route('my-bookings') }}"
                                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white flex justify-center gap-4 items-center"><i class="fa-solid fa-rv"></i>Mes réservations</a>
                             </li>
                             <li>

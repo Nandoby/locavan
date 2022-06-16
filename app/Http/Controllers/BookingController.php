@@ -3,11 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\Booking;
+use App\Models\Comment;
+use App\Models\Memory;
 use App\Models\User;
 use App\Models\Vehicle;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class BookingController extends Controller
 {
@@ -85,6 +90,120 @@ class BookingController extends Controller
         $request->session()->remove('vehicle_id');
 
         return redirect()->route('vehicle.show', ['id' => $vehicle_id])->with('success', 'Votre réservation a bien été prise en compte');
+
+    }
+
+
+    public function myBookings()
+    {
+        if (!Auth::check()) {
+           return redirect()->route('login');
+        }
+
+        $user = User::find(Auth::id());
+
+        return view('booking.my-bookings', ['user' => $user]);
+
+    }
+
+    public function show(Request $request,$id)
+    {
+
+        if (!Auth::check()) {
+            return redirect()->route('login');
+        }
+
+        $booking = Booking::find($id);
+
+        // Je vérifie que je suis bien l'utilisateur de la réservation
+        if ($booking->user->id !== Auth::id()) {
+            return abort(404);
+        }
+
+
+
+        // Je vérifie si j'ai déjà commenté la réservation
+        $hasComment = DB::table('comments')
+            ->where('comments.vehicle_id', $booking->vehicle->id)
+            ->where('comments.user_id', Auth::id())
+            ->get();
+
+
+
+
+
+
+
+        // J'enregistre l'id du booking selectionné dans la session pour sécuriser le formulaire plus tard
+        $request->session()->put('booking_id', $booking->id);
+
+        return view('booking.show', [
+            'booking' => $booking,
+            'hasComment' => $hasComment
+        ]);
+    }
+
+    public function storeComment(Request $request)
+    {
+
+        // Je récupère le model Booking à partir de l'id stocké en session
+        $booking = Booking::find($request->session()->get('booking_id'));
+        $vehicleId = $booking->vehicle->id;
+
+        $inputs = $request->all();
+        $rules = [
+            'content' => 'required',
+            'memories[]' => 'mimes:jpg,png,gif',
+        ];
+        $messages = [
+            'content.required' => 'Veuillez ajouter un commentaire',
+            'memories.mimes' => 'Veuillez uploader uniquement des fichiers de type JPG, PNG, GIF',
+        ];
+
+        // Je m'assure que les données sont valides
+        $validator = Validator::make($inputs, $rules, $messages);
+
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator);
+        }
+
+        $comment = new Comment([
+            'content' => $request->input('content'),
+            'rating' => $request->input('rating'),
+            'vehicle_id' => $vehicleId,
+            'user_id' => Auth::id(),
+        ]);
+
+        $comment->save();
+
+
+        if ($request->hasFile('memories')) {
+            $files = $request->file('memories');
+
+
+            foreach($files as $file) {
+                $path = Storage::disk('public')->put('images', $file);
+
+                $memory = new Memory([
+                    'comment_id' => $comment->id,
+                    'path' => $path,
+                ]);
+
+                $memory->save();
+            }
+
+            return redirect()->back();
+
+        }
+
+
+
+
+//        $comment->save();
+
+        // Je vide ma variable de session
+//        $request->session()->remove('booking_id');
 
     }
 
