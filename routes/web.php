@@ -21,6 +21,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index'])
     ->name('home');
 
+Route::get('/vehicles', [VehicleController::class, 'vehicles'])
+    ->name('vehicle.vehicles');
+
 
 Route::get('/vehicle/{id}', [VehicleController::class, 'show'])
     ->where('id', '[0-9]+')

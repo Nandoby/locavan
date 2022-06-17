@@ -170,9 +170,9 @@
                                     @if ( count($comment->memories) > 0 )
                                         <div class="memories flex flex-wrap gap-4 mt-4">
                                             @foreach($comment->memories as $memory)
-                                                <a href="{{ Storage::url($memory->path) }}" data-lightbox="image"
+                                                <a href="{{ preg_match('(https)', $memory->path) ? $memory->path : asset('/storage/'.$memory->path) }}" data-lightbox="image"
                                                    data-title="{{ $memory->comment->user->name }} - {{ $memory->created_at->isoFormat('LL') }} - {{ $memory->comment->vehicle->type->name }} {{ $memory->comment->vehicle->model }}">
-                                                    <img class="w-24 h-24 rounded-lg" src="{{ Storage::url($memory->path) }}">
+                                                    <img class="w-24 h-24 rounded-lg" src="{{ preg_match('(https)', $memory->path) ? $memory->path : asset('/storage/'.$memory->path) }}">
                                                 </a>
                                             @endforeach
                                         </div>
