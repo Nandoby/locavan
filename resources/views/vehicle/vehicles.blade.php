@@ -18,7 +18,7 @@
         @foreach($vehicles as $vehicle)
             <div class="max-w-sm bg-white rounded-lg border border-gray-200 shadow-md">
                 <a href="{{ route('vehicle.show', ['id' => $vehicle->id]) }}">
-                    <img class="rounded-t-lg" src="{{ preg_match('(https)', $vehicle->pictures[0]->path ) ? $vehicle->pictures[0]->path : asset('/storage/'. $vehicle->pictures->path) }}" alt="" />
+                    <img class="rounded-t-lg" src="{{ preg_match('(https)', $vehicle->pictures[0]->path ) ? $vehicle->pictures[0]->path : asset('/storage/'. $vehicle->pictures[0]->path) }}" alt="" />
                 </a>
                 <div class="p-5">
                     <a href="#">

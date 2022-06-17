@@ -21,13 +21,22 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index'])
     ->name('home');
 
+
+/**
+ * Gestion des véhicules
+ */
 Route::get('/vehicles', [VehicleController::class, 'vehicles'])
     ->name('vehicle.vehicles');
 
+Route::get('/vehicle/new', [VehicleController::class, 'create'])
+    ->name('vehicle.create');
 
 Route::get('/vehicle/{id}', [VehicleController::class, 'show'])
     ->where('id', '[0-9]+')
     ->name('vehicle.show');
+
+Route::post('/vehicle/store', [VehicleController::class, 'store'])
+    ->name('vehicle.store');
 
 /**
  * Gestion des réservations

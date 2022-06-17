@@ -14,6 +14,8 @@ class Vehicle extends Model
 {
     use HasFactory;
 
+    protected $guarded = [''];
+
 
     public function type(): BelongsTo
     {
@@ -52,8 +54,8 @@ class Vehicle extends Model
 
     public function getNotAvailableDays()
     {
-        $notAvailableDays = [];
 
+        $notAvailableDays = [];
 
         foreach ($this->bookings as $booking) {
 

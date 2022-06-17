@@ -58,7 +58,7 @@
                 @endif
                 <li class="hidden sm:block">
                     <a class="tracking-wide ring-1 ring-amber-500 text-amber-500 rounded-sm transition-all duration-300 hover:bg-amber-500 hover:text-white p-4"
-                       href="">Déposer votre annonce</a>
+                       href="{{ route('vehicle.create') }}">Déposer votre annonce</a>
                 </li>
                 <li id="burger" class="sm:hidden cursor-pointer">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 stroke-amber-500" fill="none"
@@ -158,8 +158,8 @@
                     @foreach($vehicles as $vehicle)
                         <div class="md:w-4/12 sm:w-6/12 px-4 my-4">
                             <div class="border border-neutral-300 bg-white rounded-lg">
-                                <img src="{{ $vehicle->pictures[0]->path }}"
-                                     class="block object-cover w-full rounded-t-lg"/>
+                                <img src="{{ preg_match('(https)',$vehicle->pictures[0]->path) ? $vehicle->pictures[0]->path : Storage::url($vehicle->pictures[0]->path) }}"
+                                     class="block object-cover w-full rounded-t-lg aspect-video"/>
 
                                 <div class="flex p-4 justify-between">
                                     <div class="space-y-2">
@@ -176,7 +176,7 @@
                                         <p>A partir de
                                             <b>{{ (int)$vehicle->price }} &euro;</b></p>
                                         <p>Ajouté {{ $vehicle->created_at->diffForHumans() }}</p>
-                                        <p>Par <b>{{ $vehicle->user->name }}</b></p>
+                                        <p>Par <b>{{ $vehicle->user->first_name }} {{ $vehicle->user->last_name }}</b></p>
                                     </div>
 
                                 </div>

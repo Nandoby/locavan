@@ -30,7 +30,7 @@
                 <div class="w-12/12 md:w-6/12">
                     <div class="slider">
                         @foreach($vehicle->pictures as $picture)
-                            <img class="aspect-video object-cover" src="{{ $picture->path }}">
+                            <img class="aspect-video object-cover" src="{{ preg_match('(https|http)',$picture->path) ? $picture->path : Storage::url($picture->path)}}">
                         @endforeach
                     </div>
                     <div class="flex space-x-4">

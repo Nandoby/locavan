@@ -10,6 +10,8 @@ class Picture extends Model
 {
     use HasFactory;
 
+    protected $guarded = [''];
+
     public function vehicle(): BelongsTo
     {
         return $this->belongsTo(Vehicle::class);

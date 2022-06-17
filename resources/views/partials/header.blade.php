@@ -55,7 +55,7 @@
             @endauth
             <li class="hidden md:block">
                 <a class="tracking-wide ring-1 ring-amber-500 text-amber-600 rounded-sm transition-all duration-300 hover:bg-amber-600 hover:text-white p-4"
-                   href="">Déposer une annonce</a>
+                   href="{{ route('vehicle.create') }}">Déposer une annonce</a>
             </li>
             <li id="burger" class="md:hidden cursor-pointer">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 stroke-amber-500" fill="none"
