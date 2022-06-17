@@ -129,11 +129,6 @@ class BookingController extends Controller
             ->get();
 
 
-
-
-
-
-
         // J'enregistre l'id du booking selectionné dans la session pour sécuriser le formulaire plus tard
         $request->session()->put('booking_id', $booking->id);
 

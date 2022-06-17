@@ -89,7 +89,7 @@
 
                     @else
 
-                    Vous pourrez
+                    <p class="mt-4 bg-yellow-100 text-yellow-700 text-md font-medium py-3 px-2 text-center rounded-lg">Vous pourrez commenter votre séjour dès que celui-ci sera terminé.</p>
 
                 @endif
             </div>
