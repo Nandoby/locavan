@@ -13,7 +13,8 @@
                 </li>
                 @if(!Auth::check())
                     <li class="hidden sm:block">
-                        <a class="tracking-wide linkanimate" href="{{ route('auth.login') }}">Connexion | Inscription</a>
+                        <a class="tracking-wide linkanimate" href="{{ route('auth.login') }}">Connexion |
+                            Inscription</a>
                     </li>
                 @else
                     <button id="dropdownDefault" data-dropdown-toggle="dropdown"
@@ -36,16 +37,19 @@
 
                             <li>
                                 <a href="/profile"
-                                   class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white flex justify-center gap-4 items-center"><i class="fa-solid fa-user"></i>Modifier
+                                   class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white flex justify-center gap-4 items-center"><i
+                                        class="fa-solid fa-user"></i>Modifier
                                     profil</a>
                             </li>
                             <li>
                                 <a href="{{ route('my-bookings') }}"
-                                   class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white flex justify-center gap-4 items-center"><i class="fa-solid fa-rv"></i>Mes réservations</a>
+                                   class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white flex justify-center gap-4 items-center"><i
+                                        class="fa-solid fa-rv"></i>Mes réservations</a>
                             </li>
                             <li>
                                 <a href="{{ route('auth.logout') }}"
-                                   class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white flex justify-center gap-4 items-center"><i class="fa-solid fa-arrow-right-from-bracket"></i>Déconnexion</a>
+                                   class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white flex justify-center gap-4 items-center"><i
+                                        class="fa-solid fa-arrow-right-from-bracket"></i>Déconnexion</a>
                             </li>
 
 
@@ -135,6 +139,12 @@
             </div>
         </div>
 
+        <div class="w-full flex justify-center mt-4 md:mt-16">
+            <a href="{{ route('vehicle.vehicles') }}"
+               class="text-white bg-gradient-to-r from-yellow-500 via-yellow-600 to-yellow-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-yellow-300 shadow-lg shadow-yellow-500/50 font-medium rounded-lg text-md px-5 py-2.5 text-center">Réservez
+                dès maintenant</a>
+        </div>
+
     </header>
     <main>
 
@@ -173,7 +183,8 @@
                                 <a href="{{ route('vehicle.show', ['id' => $vehicle->id]) }}"
                                    class="group m-4 inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-yellow-500 rounded-lg hover:bg-yellow-600">
                                     Voir plus
-                                    <svg class="group-hover:ml-6 transition-all duration-500 ml-2 -mr-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20"
+                                    <svg class="group-hover:ml-6 transition-all duration-500 ml-2 -mr-1 w-4 h-4"
+                                         fill="currentColor" viewBox="0 0 20 20"
                                          xmlns="http://www.w3.org/2000/svg">
                                         <path
                                             d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"></path>
