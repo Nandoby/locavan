@@ -84,3 +84,10 @@ Route::post('/register', [AuthController::class, 'registerPost'])
 Route::get('/profile', [UserController::class, 'profile'])->middleware('auth');
 Route::post('/profile', [UserController::class, 'update']);
 
+/**
+ * Gestion de la recherche
+ */
+
+Route::get('/search', [VehicleController::class, 'search'])
+    ->name('vehicles.search');
+

@@ -1131,6 +1131,18 @@ input[type="range"]::-ms-fill-lower{
 .z-10{
   z-index: 10;
 }
+.col-span-2{
+  grid-column: span 2 / span 2;
+}
+.col-start-1{
+  grid-column-start: 1;
+}
+.col-end-4{
+  grid-column-end: 4;
+}
+.col-end-5{
+  grid-column-end: 5;
+}
 .m-4{
   margin: 1rem;
 }
@@ -2072,6 +2084,11 @@ input[type="range"]::-ms-fill-lower{
   background-color: rgb(188 240 218 / var(--tw-bg-opacity));
 }
 
+.dark .dark\:bg-red-200{
+  --tw-bg-opacity: 1;
+  background-color: rgb(251 213 213 / var(--tw-bg-opacity));
+}
+
 .dark .dark\:text-gray-200{
   --tw-text-opacity: 1;
   color: rgb(229 231 235 / var(--tw-text-opacity));
@@ -2090,6 +2107,11 @@ input[type="range"]::-ms-fill-lower{
 .dark .dark\:text-green-800{
   --tw-text-opacity: 1;
   color: rgb(3 84 63 / var(--tw-text-opacity));
+}
+
+.dark .dark\:text-red-800{
+  --tw-text-opacity: 1;
+  color: rgb(155 28 28 / var(--tw-text-opacity));
 }
 
 .dark .dark\:hover\:bg-blue-700:hover{

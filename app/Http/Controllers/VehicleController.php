@@ -81,7 +81,7 @@ class VehicleController extends Controller
             'year' => ['required', 'numeric', 'digits:4'],
             'length' => ['required', 'numeric'],
             'height' => ['required', 'numeric'],
-            'width' => ['required', 'numeric', ],
+            'width' => ['required', 'numeric',],
             'km' => ['required', 'numeric'],
             'city' => ['required', 'alpha', 'max:50'],
             'clean_water' => ['required', 'numeric'],
@@ -119,7 +119,7 @@ class VehicleController extends Controller
         if ($request->hasFile('pictures')) {
             $files = $request->file('pictures');
 
-            foreach($files as $file) {
+            foreach ($files as $file) {
                 $path = Storage::disk('public')->put('images', $file);
                 $pictures = new Picture([
                     'title' => 'montitre',
@@ -150,6 +150,18 @@ class VehicleController extends Controller
         return view('vehicle.myAds', [
             'vehicles' => $vehicles,
         ]);
+    }
+
+    public function search(Request $request)
+    {
+        $search = $request->input('city');
+        $vehicles = Vehicle::query()->where('city', 'LIKE', '%'.$search.'%')->get();
+
+        return view('vehicle.vehicles', [
+            'vehicles' => $vehicles,
+            'request' => $request->input('city')
+        ]);
+
     }
 
 }
