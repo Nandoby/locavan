@@ -1,3 +1,7 @@
+@php
+    $currentUser = auth()->user();
+@endphp
+
 @extends('app')
 
 @section('title')
@@ -37,18 +41,27 @@
 
                             <li>
                                 <a href="/profile"
-                                   class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white flex justify-center gap-4 items-center"><i
+                                   class="block px-4 py-2 hover:bg-gray-100 flex justify-center gap-4 items-center"><i
                                         class="fa-solid fa-user"></i>Modifier
                                     profil</a>
                             </li>
                             <li>
                                 <a href="{{ route('my-bookings') }}"
-                                   class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white flex justify-center gap-4 items-center"><i
+                                   class="block px-4 py-2 hover:bg-gray-100 flex justify-center gap-4 items-center"><i
                                         class="fa-solid fa-rv"></i>Mes réservations</a>
                             </li>
+                            @if(count($currentUser->vehicles) > 0)
+                                <li>
+                                    <a href="{{ route('my-ads') }}"
+                                       class="block px-4 py-2 hover:bg-gray-100 flex justify-center gap-4 items-center">
+                                        <i class="fa-regular fa-book-open"></i>
+                                        Mes annonces
+                                    </a>
+                                </li>
+                            @endif
                             <li>
                                 <a href="{{ route('auth.logout') }}"
-                                   class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white flex justify-center gap-4 items-center"><i
+                                   class="block px-4 py-2 hover:bg-gray-100 flex justify-center gap-4 items-center"><i
                                         class="fa-solid fa-arrow-right-from-bracket"></i>Déconnexion</a>
                             </li>
 
@@ -158,8 +171,9 @@
                     @foreach($vehicles as $vehicle)
                         <div class="md:w-4/12 sm:w-6/12 px-4 my-4">
                             <div class="border border-neutral-300 bg-white rounded-lg">
-                                <img src="{{ preg_match('(https)',$vehicle->pictures[0]->path) ? $vehicle->pictures[0]->path : Storage::url($vehicle->pictures[0]->path) }}"
-                                     class="block object-cover w-full rounded-t-lg aspect-video"/>
+                                <img
+                                    src="{{ preg_match('(https)',$vehicle->pictures[0]->path) ? $vehicle->pictures[0]->path : Storage::url($vehicle->pictures[0]->path) }}"
+                                    class="block object-cover w-full rounded-t-lg aspect-video"/>
 
                                 <div class="flex p-4 justify-between">
                                     <div class="space-y-2">
@@ -176,7 +190,8 @@
                                         <p>A partir de
                                             <b>{{ (int)$vehicle->price }} &euro;</b></p>
                                         <p>Ajouté {{ $vehicle->created_at->diffForHumans() }}</p>
-                                        <p>Par <b>{{ $vehicle->user->first_name }} {{ $vehicle->user->last_name }}</b></p>
+                                        <p>Par <b>{{ $vehicle->user->first_name }} {{ $vehicle->user->last_name }}</b>
+                                        </p>
                                     </div>
 
                                 </div>

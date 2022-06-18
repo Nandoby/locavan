@@ -15,7 +15,7 @@
             @foreach ($user->bookings as $book)
                 <div class="max-w-sm bg-white rounded-lg border border-gray-200 shadow-md">
                     <a href="{{ route('booking.show', ['id' => $book->id]) }}">
-                        <img class="rounded-t-lg" src="{{ $book->vehicle->pictures[0]->path }}">
+                        <img class="rounded-t-lg w-full object-cover object-center aspect-video" src="{{ preg_match('(https|http)', $book->vehicle->pictures[0]->path) ? $book->vehicle->pictures[0]->path : Storage::url($book->vehicle->pictures[0]->path)}}">
                     </a>
                     <div class="p-5">
                         <a href="#">

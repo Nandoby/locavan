@@ -38,6 +38,9 @@ Route::get('/vehicle/{id}', [VehicleController::class, 'show'])
 Route::post('/vehicle/store', [VehicleController::class, 'store'])
     ->name('vehicle.store');
 
+Route::get('/my-ads', [VehicleController::class, 'myAds'])
+    ->name('my-ads');
+
 /**
  * Gestion des réservations
  */
@@ -80,3 +83,4 @@ Route::post('/register', [AuthController::class, 'registerPost'])
  */
 Route::get('/profile', [UserController::class, 'profile'])->middleware('auth');
 Route::post('/profile', [UserController::class, 'update']);
+

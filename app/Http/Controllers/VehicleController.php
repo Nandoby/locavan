@@ -6,10 +6,12 @@ use App\Models\Comment;
 use App\Models\Picture;
 use App\Models\Type;
 use App\Models\Vehicle;
+use http\Client\Curl\User;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -66,9 +68,6 @@ class VehicleController extends Controller
             ]);
         }
 
-
-
-
     }
 
     public function store(Request $request)
@@ -122,7 +121,6 @@ class VehicleController extends Controller
 
             foreach($files as $file) {
                 $path = Storage::disk('public')->put('images', $file);
-
                 $pictures = new Picture([
                     'title' => 'montitre',
                     'path' => $path,
@@ -136,13 +134,22 @@ class VehicleController extends Controller
         }
 
         return redirect()->back();
-
-
-
-
     }
 
+    public function myAds()
+    {
 
+        $user = \App\Models\User::find(auth()->id());
 
+        $vehicles = $user->vehicles;
+
+        if (!auth()->check()) {
+            return redirect()->route('login');
+        }
+
+        return view('vehicle.myAds', [
+            'vehicles' => $vehicles,
+        ]);
+    }
 
 }

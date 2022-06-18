@@ -1,3 +1,7 @@
+@php
+    $currentUser = auth()->user();
+@endphp
+
 <header class="p-4 flex justify-between shadow items-center md:flex-wrap bg-white">
     <div class="flex">
         <h1 class="text-3xl uppercase text-amber-600 mr-4">
@@ -45,6 +49,15 @@
                             <a href="{{ route('my-bookings') }}"
                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white flex justify-center gap-4 items-center"><i class="fa-solid fa-rv"></i>Mes réservations</a>
                         </li>
+                        @if(count($currentUser->vehicles) > 0)
+                            <li>
+                                <a href="{{ route('my-ads') }}"
+                                   class="block px-4 py-2 hover:bg-gray-100 flex justify-center gap-4 items-center">
+                                    <i class="fa-regular fa-book-open"></i>
+                                    Mes annonces
+                                </a>
+                            </li>
+                        @endif
                         <li>
                             <a href="{{ route('auth.logout') }}"
                                class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white flex justify-center gap-4 items-center"><i class="fa-solid fa-arrow-right-from-bracket"></i>Déconnexion</a>
