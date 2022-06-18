@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\HomeController;
@@ -91,3 +92,14 @@ Route::post('/profile', [UserController::class, 'update']);
 Route::get('/search', [VehicleController::class, 'search'])
     ->name('vehicles.search');
 
+/**
+ * Administration
+ */
+
+Route::get('/admin', [AdminController::class, 'index'])->middleware('auth');
+Route::get('/admin/users', [AdminController::class, 'users'])->middleware('auth')
+    ->name('admin.users');
+Route::get('/admin/vehicles', [AdminController::class, 'vehicles'])->middleware('auth')
+    ->name('admin.vehicles');
+Route::get('/admin/comments', [AdminController::class, 'comments'])->middleware('auth')
+    ->name('admin.comments');

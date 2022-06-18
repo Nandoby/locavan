@@ -2221,22 +2221,25 @@ var burger = document.getElementById('burger');
 var menu = document.getElementById('mobile');
 var close = document.getElementById('close');
 var open = false;
-burger.addEventListener('click', function () {
-  open = true;
 
-  if (open) {
-    menu.classList.add('left-0');
-    menu.classList.remove('-left-[100%]');
-  }
-});
-close.addEventListener('click', function () {
-  open = false;
+if (burger !== null) {
+  burger.addEventListener('click', function () {
+    open = true;
 
-  if (!open) {
-    menu.classList.add('-left-[100%]');
-    menu.classList.remove('left-0');
-  }
-});
+    if (open) {
+      menu.classList.add('left-0');
+      menu.classList.remove('-left-[100%]');
+    }
+  });
+  close.addEventListener('click', function () {
+    open = false;
+
+    if (!open) {
+      menu.classList.add('-left-[100%]');
+      menu.classList.remove('left-0');
+    }
+  });
+}
 
 /***/ }),
 

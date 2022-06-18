@@ -13,7 +13,7 @@
             <div class="relative">
                 <input
                     class="p-2 border border-neutral-400 rounded pl-12 placeholder:text-sm focus:outline outline-amber-500 w-full"
-                    type="search" placeholder="Ex: Mons" name="city" value="{{ $request  }}">
+                    type="search" placeholder="Ex: Mons" name="city" value="{{ isset($request) ? $request : ''  }}">
                 <svg xmlns="http://www.w3.org/2000/svg"
                      class="h-5 w-5 absolute top-[50%] translate-y-[-50%] ml-4 stroke-neutral-400" fill="none"
                      viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
