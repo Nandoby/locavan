@@ -214,10 +214,5 @@
         </section>
         <!-- Latest ADS End -->
 
-        <section class="min-h-screen">
-            <h2 class="text-3xl font-bold text-center my-8 tracking-wide underline underline-offset-8 decoration-amber-500">
-                Ce que nos clients pensent de nous</h2>
-        </section>
     </main>
-
 @endsection

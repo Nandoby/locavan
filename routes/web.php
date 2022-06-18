@@ -103,3 +103,15 @@ Route::get('/admin/vehicles', [AdminController::class, 'vehicles'])->middleware(
     ->name('admin.vehicles');
 Route::get('/admin/comments', [AdminController::class, 'comments'])->middleware('auth')
     ->name('admin.comments');
+
+/**
+ * Legislation
+ */
+
+Route::get('/cgu', function() {
+    return view('legislation.cgu');
+})->name('cgu');
+
+Route::get('/privacy', function() {
+    return view('legislation.privacy');
+})->name('privacy');

@@ -38,6 +38,7 @@
 </head>
 <body class="bg-slate-50">
 @yield('content')
+@include('partials.footer')
 <script src="{{ asset("js/app.js") }}"></script>
 @yield('javascripts')
 </body>
