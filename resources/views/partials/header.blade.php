@@ -2,7 +2,7 @@
     $currentUser = auth()->user();
 @endphp
 
-<header class="p-4 flex flex-wrap justify-center md:justify-between shadow items-center md:flex-wrap bg-white">
+<header class="p-4 flex flex-wrap justify-center md:justify-between shadow items-center md:flex-wrap bg-white space-y-2">
     <div class="flex">
         <h1 class=" text-xl md:text-3xl uppercase text-amber-600 mr-4">
             <a href="{{ route('home') }}">
@@ -10,7 +10,7 @@
             </a>
         </h1>
     </div>
-    <form action="{{ route('vehicles.search') }}" class="mt-8 sm:mt-0">
+    <form action="{{ route('vehicles.search') }}" class="">
         <div class="relative">
             <input
                 class="p-2 border border-neutral-400 rounded pl-8 placeholder:text-sm focus:outline outline-amber-500 w-full"
@@ -25,7 +25,7 @@
     </form>
 
     <nav id="navigation" class="md:my-8">
-        <ul class="flex items-center">
+        <ul class="flex items-center space-x-4">
             <li class="hidden md:block">
                 <a class="tracking-wide linkanimate" href="{{ route('home') }}">Accueil</a>
             </li>
