@@ -2,29 +2,30 @@
     $currentUser = auth()->user();
 @endphp
 
-<header class="p-4 flex justify-between shadow items-center md:flex-wrap bg-white">
+<header class="p-4 flex flex-wrap justify-center md:justify-between shadow items-center md:flex-wrap bg-white">
     <div class="flex">
-        <h1 class="text-3xl uppercase text-amber-600 mr-4">
+        <h1 class=" text-xl md:text-3xl uppercase text-amber-600 mr-4">
             <a href="{{ route('home') }}">
                 <span class="text-black border-y-2 border-y-amber-600">Loca</span>van
             </a>
         </h1>
-        <form action="{{ route('vehicles.search') }}">
-            <div class="relative">
-                <input
-                    class="p-2 border border-neutral-400 rounded pl-12 placeholder:text-sm focus:outline outline-amber-500 w-full"
-                    type="search" placeholder="Ex: Mons" name="city" value="{{ isset($request) ? $request : ''  }}">
-                <svg xmlns="http://www.w3.org/2000/svg"
-                     class="h-5 w-5 absolute top-[50%] translate-y-[-50%] ml-4 stroke-neutral-400" fill="none"
-                     viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                          d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
-                </svg>
-            </div>
-        </form>
     </div>
-    <nav id="navigation">
-        <ul class="flex items-center space-x-4">
+    <form action="{{ route('vehicles.search') }}" class="mt-8 sm:mt-0">
+        <div class="relative">
+            <input
+                class="p-2 border border-neutral-400 rounded pl-8 placeholder:text-sm focus:outline outline-amber-500 w-full"
+                type="search" placeholder="Ex: Mons" name="city" value="{{ isset($request) ? $request : ''  }}">
+            <svg xmlns="http://www.w3.org/2000/svg"
+                 class="h-5 w-5 absolute top-[50%] translate-y-[-50%] ml-2 stroke-neutral-400" fill="none"
+                 viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+            </svg>
+        </div>
+    </form>
+
+    <nav id="navigation" class="md:my-8">
+        <ul class="flex items-center">
             <li class="hidden md:block">
                 <a class="tracking-wide linkanimate" href="{{ route('home') }}">Accueil</a>
             </li>
