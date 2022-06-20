@@ -2,21 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Comment;
 use App\Models\Picture;
 use App\Models\Type;
 use App\Models\Vehicle;
-use http\Client\Curl\User;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
-use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Validator;
 
 class VehicleController extends Controller
 {

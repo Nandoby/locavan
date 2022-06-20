@@ -6,7 +6,7 @@
 
 @section('content')
     @include('partials.header')
-    <section class="container mx-auto p-4">
+    <section class="container mx-auto p-4 min-h-screen">
         <h1 class="text-2xl font-bold my-4">Mes réservations</h1>
 
 

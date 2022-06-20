@@ -19,9 +19,9 @@
     @endif
 
     <section class="h-screen flex">
-        <img class="w-6/12 object-cover" src="{{ asset('images/login-background.jpg') }}" alt="">
-        <div class="flex justify-center items-center w-6/12">
-            <form class="w-6/12 bg-white p-4 shadow-lg" method="post" action="{{ route('login') }}">
+        <img class="hidden lg:block md:w-6/12 object-cover" src="{{ asset('images/login-background.jpg') }}" alt="">
+        <div class="flex justify-center items-center w-full lg:w-6/12">
+            <form class="md:w-8/12 bg-white p-4 m-4 shadow-lg" method="post" action="{{ route('login') }}">
                 @csrf
                 <h1 class="text-3xl uppercase text-amber-600 drop-shadow-lg">
                     <a href="{{ route('home') }}">

@@ -70,7 +70,7 @@
                     </div>
                 @endif
                 <li class="hidden sm:block">
-                    <a class="tracking-wide ring-1 ring-amber-500 text-amber-500 rounded-sm transition-all duration-300 hover:bg-amber-500 hover:text-white p-4"
+                    <a class="tracking-wide border border-amber-500 text-amber-500 rounded-sm transition-all duration-300 hover:bg-amber-500 hover:text-white p-4"
                        href="{{ route('vehicle.create') }}">Déposer votre annonce</a>
                 </li>
                 <li id="burger" class="sm:hidden cursor-pointer">
@@ -96,12 +96,12 @@
                 @guest()
                     <li>
                         <a class="text-amber-500 text-lg block text-center p-2 transition-bg duration-300 cubic active:bg-amber-50"
-                           href="">Connexion</a>
+                           href="{{ route('login') }}">Connexion</a>
                     </li>
                 @endguest
                 <li>
-                    <a class="text-amber-500 text-lg block text-center p-2 transition-bg duration-300 cubic active:bg-amber-50"
-                       href="">Déposer une annonce</a>
+                    <a class="tracking-wide ring-1 ring-amber-500 text-amber-500 rounded-sm transition-all duration-300 hover:bg-amber-500 hover:text-white p-4"
+                       href="{{ route('vehicle.create') }}">Déposer une annonce</a>
                 </li>
             </ul>
         </nav>

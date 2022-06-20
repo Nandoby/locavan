@@ -17,7 +17,7 @@
 
 @section('content')
     @include('partials.header')
-    <div class="container mx-auto p-4">
+    <div class="container mx-auto p-4 min-h-screen">
         <h1 class="font-bold text-2xl my-4">Détails de votre réservation</h1>
         <div class="shadow border border-gray-300 rounded overflow-hidden">
             <div class="bg-white p-4 border border-b-gray-300">
