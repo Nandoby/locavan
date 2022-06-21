@@ -39,7 +39,7 @@
                         <input type="hidden" name="vehicle_id" value="{{ $vehicle->id }}">
                     </form>
                 </div>
-                <img src="{{ $vehicle->pictures[0]->path }}" class="md:w-6/12 aspect-video rounded shadow order-1 md:order-2 mb-8 md:mb-0">
+                <img src="{{ Storage::url($vehicle->pictures[0]->path) }}" class="md:w-6/12 aspect-video rounded shadow order-1 md:order-2 mb-8 md:mb-0">
             </div>
         </div>
     </section>

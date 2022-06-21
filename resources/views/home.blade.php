@@ -100,7 +100,7 @@
                     </li>
                 @endguest
                 <li>
-                    <a class="tracking-wide ring-1 ring-amber-500 text-amber-500 rounded-sm transition-all duration-300 hover:bg-amber-500 hover:text-white p-4"
+                    <a class="text-amber-500 text-lg block text-center p-2 transition-bg duration-300 cubic active:bg-amber-50"
                        href="{{ route('vehicle.create') }}">Déposer une annonce</a>
                 </li>
             </ul>

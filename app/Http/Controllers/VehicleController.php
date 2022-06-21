@@ -85,7 +85,13 @@ class VehicleController extends Controller
             'animals' => ['required', 'boolean'],
             'travel_abroad' => ['required', 'boolean'],
             'description' => ['required'],
+            'pictures' => ['required'],
+            'pictures.*' => ['mimes:jpg,jpeg,png', 'max:4000'],
         ]);
+
+
+
+
 
 
         $vehicle = new Vehicle([
@@ -111,6 +117,8 @@ class VehicleController extends Controller
         $vehicle->save();
 
         if ($request->hasFile('pictures')) {
+
+
             $files = $request->file('pictures');
 
             foreach ($files as $file) {

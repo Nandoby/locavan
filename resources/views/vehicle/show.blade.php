@@ -160,7 +160,7 @@
                     <div class="divide-y divide-slate-300 w-12/12 lg:w-6/12 mx-auto">
                         @foreach($vehicle->comments as $comment)
                             <div class="my-8 flex gap-4 p-6 items-start">
-                                <img class="rounded-lg w-16" src="{{ Storage::url($vehicle->user->avatar_path) }}">
+                                <img class="rounded-lg w-16 h-16" src="{{ Storage::url($comment->user->avatar_path) }}">
                                 <div class="w-full">
                                     <h5 class="font-medium">{{ $comment->user->first_name }} {{ $comment->user->last_name }}</h5>
                                     <p class="text-sm text-neutral-500 italic">{{ $comment->created_at->isoFormat('LL') }}</p>

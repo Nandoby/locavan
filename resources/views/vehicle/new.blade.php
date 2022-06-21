@@ -177,9 +177,12 @@
                     <label for="pictures" class="label">Photos</label>
                     <input type="file" name="pictures[]" id="pictures"
                            class="input-file {{ session('extension') ? 'border-red-500' : null }}" multiple>
-                    @error('pictures')
-                    <span class="text-sm text-red-600 font-normal">{{ $message }}</span>
-                    @enderror
+                    @if ($errors->has('pictures'))
+                        <span class="text-sm text-red-600 font-normal">{{ $errors->first('pictures') }}</span>
+                    @endif
+                    @if ($errors->has('pictures.*'))
+                            <span class="text-sm text-red-600 font-normal">{{ $errors->first('pictures.*') }}</span>
+                    @endif
                 </div>
 
             </div>

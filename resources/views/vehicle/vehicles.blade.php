@@ -15,11 +15,11 @@
         </h1>
 
         <div
-            class="container mx-auto px-4 grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 justify-center mt-4">
+            class="container mx-auto px-4 grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 grid-rows-6 gap-4 justify-center mt-4">
             @forelse($vehicles as $vehicle)
                 <div class="max-w-sm bg-white rounded-lg border border-gray-200 shadow-md">
                     <a href="{{ route('vehicle.show', ['id' => $vehicle->id]) }}">
-                        <img class="rounded-t-lg"
+                        <img class="rounded-t-lg w-full max-h-56 object-cover object-center"
                              src="{{ preg_match('(https)', $vehicle->pictures[0]->path ) ? $vehicle->pictures[0]->path : asset('/storage/'. $vehicle->pictures[0]->path) }}"
                              alt=""/>
                     </a>
